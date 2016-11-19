@@ -26,6 +26,7 @@
         android:scaleType="fitXY"/>
 
     <Button
+        android:onClick="closeApplication"
         android:id="@+id/but_closeApp"
         android:text="App beenden"
         android:layout_height="wrap_content"

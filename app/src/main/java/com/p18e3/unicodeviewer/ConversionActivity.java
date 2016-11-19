@@ -7,15 +7,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class ConversionActivity extends AppCompatActivity {
 
     private TextView tv_unicodeOutput;
     private TextView tv_hexInput;
-    private ImageButton but_incrementHexInput;
-    private ImageButton but_decrementHexInput;
     private int hexInputNumber = 0x0021;
 
     @Override
@@ -23,7 +20,9 @@ public class ConversionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversion);
 
-        initializeControls();
+        tv_unicodeOutput = (TextView) findViewById(R.id.tv_unicodeOutput);
+        tv_hexInput = (TextView) findViewById(R.id.tv_hexInput);
+        updateUserInterface();
     }
 
     @Override
@@ -49,47 +48,21 @@ public class ConversionActivity extends AppCompatActivity {
         }
     }
 
-    private void initializeControls() {
+    public void incrementHexInput(View view) {
+        hexInputNumber++;
+        updateUserInterface();
+    }
 
-        // TextView for Hex input.
-        tv_hexInput = (TextView) findViewById(R.id.tv_hexInput);
+    public void decrementHexInput(View view) {
+        hexInputNumber--;
+        updateUserInterface();
+    }
+
+    private void updateUserInterface() {
         String hexInputString = String.format("#%04X", hexInputNumber);
         tv_hexInput.setText(hexInputString);
 
-        // TextView für Unicode output.
-        tv_unicodeOutput = (TextView) findViewById(R.id.tv_unicodeOutput);
-        //tv_unicodeOutput.setText("\u0021");
-
-        // Button to increment hex input.
-        but_incrementHexInput = (ImageButton) findViewById(R.id.but_incrementHexInput);
-        but_incrementHexInput.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hexInputNumber++;
-                String hexInputString = String.format("#%04X", hexInputNumber);
-                tv_hexInput.setText(hexInputString);
-                convertToUnicodeSign(hexInputNumber);
-            }
-        });
-
-        // Button to decrement hex input.
-        but_decrementHexInput = (ImageButton) findViewById(R.id.but_decrementHexInput);
-        but_decrementHexInput.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hexInputNumber--;
-                String hexInputString = String.format("#%04X", hexInputNumber);
-                tv_hexInput.setText(hexInputString);
-                convertToUnicodeSign(hexInputNumber);
-            }
-        });
-
-        convertToUnicodeSign(hexInputNumber);
-    }
-
-    private void convertToUnicodeSign(int hexString) {
-        //int decimalNumber = Integer.parseInt(hexString, 16);
-        char unicodeSymbol = (char) hexString;
+        char unicodeSymbol = (char) hexInputNumber;
 
         String unicodeSymbolText = String.format("%s", unicodeSymbol);
         tv_unicodeOutput.setText(unicodeSymbolText);

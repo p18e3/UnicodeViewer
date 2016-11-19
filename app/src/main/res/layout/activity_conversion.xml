@@ -23,6 +23,7 @@
             android:layout_height="match_parent"
             android:id="@+id/but_decrementHexInput"
             android:src="@drawable/ic_remove_black_24dp"
+            android:onClick="decrementHexInput"
             />
 
         <TextView
@@ -30,7 +31,6 @@
             android:textAlignment="center"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Hex: #2567"
             android:textSize="60sp"
             />
 
@@ -39,6 +39,7 @@
             android:layout_height="match_parent"
             android:id="@+id/but_incrementHexInput"
             android:src="@drawable/ic_add_black_24dp"
+            android:onClick="incrementHexInput"
             />
 
     </LinearLayout>
