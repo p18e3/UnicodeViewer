@@ -1,7 +1,11 @@
 package com.p18e3.unicodeviewer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -22,7 +26,30 @@ public class ConversionActivity extends AppCompatActivity {
         initializeControls();
     }
 
-    private void initializeControls(){
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.actionmenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_open_settings:
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.action_set_color:
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void initializeControls() {
 
         // TextView for Hex input.
         tv_hexInput = (TextView) findViewById(R.id.tv_hexInput);
@@ -60,7 +87,7 @@ public class ConversionActivity extends AppCompatActivity {
         convertToUnicodeSign(hexInputNumber);
     }
 
-    private void convertToUnicodeSign(int hexString){
+    private void convertToUnicodeSign(int hexString) {
         //int decimalNumber = Integer.parseInt(hexString, 16);
         char unicodeSymbol = (char) hexString;
 
