@@ -7,12 +7,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class ConversionActivity extends AppCompatActivity {
 
     private TextView tv_unicodeOutput;
     private TextView tv_hexInput;
+    private EditText et_hexInputString;
     private int hexInputNumber = 0x0021;
 
     @Override
@@ -22,6 +24,8 @@ public class ConversionActivity extends AppCompatActivity {
 
         tv_unicodeOutput = (TextView) findViewById(R.id.tv_unicodeOutput);
         tv_hexInput = (TextView) findViewById(R.id.tv_hexInput);
+        et_hexInputString = (EditText) findViewById(R.id.et_hexInputString);
+
         updateUserInterface();
     }
 
@@ -55,6 +59,61 @@ public class ConversionActivity extends AppCompatActivity {
 
     public void decrementHexInput(View view) {
         hexInputNumber--;
+        updateUserInterface();
+    }
+
+    public void removeDigit(View view) {
+        String currentText = et_hexInputString.getText().toString();
+
+        if (currentText.length() == 0)
+            return;
+
+        String updatedText = currentText.substring(0, currentText.length() - 1);
+        et_hexInputString.setText(updatedText);
+    }
+
+    public void writeDigit(View view) {
+        TextView textView = (TextView) view;
+
+        String currentText = et_hexInputString.getText().toString();
+        et_hexInputString.setText(currentText + textView.getText().toString());
+    }
+
+    public void setHexInputNumber(View view){
+        hexInputNumber = Integer.parseInt(et_hexInputString.getText().toString(),16);
+        updateUserInterface();
+    }
+
+    public void incrementCodePart(View view){
+        if(hexInputNumber == 65535){
+            return;
+        }
+
+        hexInputNumber++;
+        updateUserInterface();
+    }
+
+    public void decrementCodePart(View view){
+        if(hexInputNumber == 0)
+            return;
+
+        hexInputNumber--;
+        updateUserInterface();
+    }
+
+    public void incrementPagePart(View view){
+        if(hexInputNumber > 65280)
+            return;
+
+        hexInputNumber += 256;
+        updateUserInterface();
+    }
+
+    public void decrementPagePart(View view){
+        if(hexInputNumber < 256)
+            return;
+
+        hexInputNumber -= 256;
         updateUserInterface();
     }
 
