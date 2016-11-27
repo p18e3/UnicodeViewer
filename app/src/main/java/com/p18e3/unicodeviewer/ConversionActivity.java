@@ -1,5 +1,6 @@
 package com.p18e3.unicodeviewer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ConversionActivity extends AppCompatActivity {
 
@@ -79,13 +81,22 @@ public class ConversionActivity extends AppCompatActivity {
         et_hexInputString.setText(currentText + textView.getText().toString());
     }
 
-    public void setHexInputNumber(View view){
-        hexInputNumber = Integer.parseInt(et_hexInputString.getText().toString(),16);
+    public void setHexInputNumber(View view) {
+
+        // Validate the user input.
+        if (et_hexInputString.getText().length() == 0) {
+            Context context = getApplicationContext();
+            Toast toast = Toast.makeText(context, "Please type in a hex number.", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
+
+        hexInputNumber = Integer.parseInt(et_hexInputString.getText().toString(), 16);
         updateUserInterface();
     }
 
-    public void incrementCodePart(View view){
-        if(hexInputNumber == 65535){
+    public void incrementCodePart(View view) {
+        if (hexInputNumber == 65535) {
             return;
         }
 
@@ -93,24 +104,24 @@ public class ConversionActivity extends AppCompatActivity {
         updateUserInterface();
     }
 
-    public void decrementCodePart(View view){
-        if(hexInputNumber == 0)
+    public void decrementCodePart(View view) {
+        if (hexInputNumber == 0)
             return;
 
         hexInputNumber--;
         updateUserInterface();
     }
 
-    public void incrementPagePart(View view){
-        if(hexInputNumber > 65280)
+    public void incrementPagePart(View view) {
+        if (hexInputNumber > 65280)
             return;
 
         hexInputNumber += 256;
         updateUserInterface();
     }
 
-    public void decrementPagePart(View view){
-        if(hexInputNumber < 256)
+    public void decrementPagePart(View view) {
+        if (hexInputNumber < 256)
             return;
 
         hexInputNumber -= 256;
