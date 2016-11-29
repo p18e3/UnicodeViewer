@@ -129,7 +129,7 @@ public class ConversionActivity extends AppCompatActivity {
     }
 
     private void updateUserInterface() {
-        String hexInputString = String.format("#%04X", hexInputNumber);
+        String hexInputString = String.format("0x%04X", hexInputNumber);
         tv_hexInput.setText(hexInputString);
 
         char unicodeSymbol = (char) hexInputNumber;

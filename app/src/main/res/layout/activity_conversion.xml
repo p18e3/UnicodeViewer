@@ -113,28 +113,36 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
         <Button
             android:text="2"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
         <Button
             android:text="3"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
         <Button
             android:text="4"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
     </LinearLayout>
 
@@ -147,28 +155,36 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
         <Button
             android:text="6"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
         <Button
             android:text="7"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
         <Button
             android:text="8"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
     </LinearLayout>
 
@@ -181,28 +197,36 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
         <Button
             android:text="A"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
         <Button
             android:text="B"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
         <Button
             android:text="C"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
     </LinearLayout>
 
@@ -221,28 +245,36 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
         <Button
             android:text="E"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
         <Button
             android:text="F"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
         <Button
             android:text="0"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:onClick="writeDigit"/>
+            android:onClick="writeDigit"
+            android:textSize="15sp"
+            android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
     </LinearLayout>
 
