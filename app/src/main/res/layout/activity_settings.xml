@@ -12,25 +12,76 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Entwickler: Patrick Eberle"/>
-
-    <ImageView
-        android:id="@+id/iv_developerImage"
-        android:layout_width="300dp"
-        android:layout_margin="15dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:src="@drawable/patrickeberle"
-        android:scaleType="fitXY"/>
+        android:text="Background color" />
 
     <Button
-        android:onClick="closeApplication"
-        android:id="@+id/but_closeApp"
-        android:text="App beenden"
+        android:text="Select ..."
+        android:layout_gravity="right"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:onClick="openColorPickerForBackgroundColor"
+        android:textSize="15sp"
+        android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Font color" />
+
+    <Button
+        android:text="Select ..."
+        android:layout_gravity="right"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:onClick="openColorPickerForFontColor"
+        android:textSize="15sp"
+        android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Font type" />
+
+    <Spinner
+        android:id="@+id/sp_fontType"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Spinner>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Font style" />
+
+    <Spinner
+        android:id="@+id/sp_fontStyle"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Spinner>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Font size" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
+        android:id="@+id/sb_textSize"/>
+
+    <Button
+        android:text="Save changes"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:background="@android:color/holo_red_light"/>
+        android:onClick="saveChanges"
+        android:textSize="15sp"
+        android:minHeight="@dimen/abc_action_bar_navigation_padding_start_material"/>
 
 </LinearLayout>

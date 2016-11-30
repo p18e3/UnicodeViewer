@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">UnicodeViewer</string>
+    <string name="preferences_lastHexNumber">preferences_lastHexNumber</string>
+    <string name="preferences_lastHexNumberString">preferences_lastHexNumberString</string>
+    <string name="preferences_textSize">preferences_textSize</string>
+    <string name="preferences_fontType">preferences_fontType</string>
+    <string name="preferences_fontStyle">preferences_fontStyle</string>
+    <string name="preferences_fontColor">preferences_fontColor</string>
+    <string name="preferences_backgroundColor">preferences_backgroundColor</string>
+    <string-array name="fontTypesArray">
+        <item>arial</item>
+        <item>consolas</item>
+        <item>times-new-roman</item>
+        <item>sans-serif-light</item>
+    </string-array>
+    <string-array name="fontStylesArray">
+        <item>normal</item>
+        <item>bold</item>
+        <item>italic</item>
+    </string-array>
+
 </resources>

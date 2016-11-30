@@ -1,9 +1,14 @@
 package com.p18e3.unicodeviewer;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,21 +19,62 @@ import android.widget.Toast;
 
 public class ConversionActivity extends AppCompatActivity {
 
+    // region Private fields
+
     private TextView tv_unicodeOutput;
     private TextView tv_hexInput;
+    private TextView tv_binaryString;
     private EditText et_hexInputString;
+    private Dialog aboutDialog;
+
     private int hexInputNumber = 0x0021;
+
+    SharedPreferences sharedPreferences;
+
+    // endregion
+
+    // region Overrides
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversion);
 
+        //sharedPreferences = getPreferences(MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("UnicodeViewer", MODE_PRIVATE);
+
         tv_unicodeOutput = (TextView) findViewById(R.id.tv_unicodeOutput);
         tv_hexInput = (TextView) findViewById(R.id.tv_hexInput);
+        tv_binaryString = (TextView) findViewById(R.id.tv_binaryString);
         et_hexInputString = (EditText) findViewById(R.id.et_hexInputString);
 
+        int lastHexNumber = sharedPreferences.getInt(getString(R.string.preferences_lastHexNumber), 33);
+        hexInputNumber = lastHexNumber;
+
+        String lastHexNumberString = sharedPreferences.getString(getString(R.string.preferences_lastHexNumberString), "33");
+        et_hexInputString.setText(lastHexNumberString);
+
         updateUserInterface();
+
+        Log.d("INFO", "onCreate: ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("INFO", "onResume: ");
+
+        int backgroundColor = sharedPreferences.getInt(getString(R.string.preferences_backgroundColor), -3355444);
+        int fontColor = sharedPreferences.getInt(getString(R.string.preferences_fontColor), -3355444);
+        int textSize = sharedPreferences.getInt(getString(R.string.preferences_textSize), 80);
+
+        tv_unicodeOutput.setBackgroundColor(backgroundColor);
+        tv_unicodeOutput.setTextColor(fontColor);
+        tv_unicodeOutput.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+
+        String fontType = sharedPreferences.getString(getString(R.string.preferences_fontType), "sans-serif");
+        int fontStyle = sharedPreferences.getInt(getString(R.string.preferences_fontStyle), 0);
+        tv_unicodeOutput.setTypeface(Typeface.create(fontType, fontStyle));
     }
 
     @Override
@@ -46,13 +92,28 @@ public class ConversionActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
 
-            case R.id.action_set_color:
+            case R.id.action_close_app:
+                closeApplication();
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt(getString(R.string.preferences_lastHexNumber), hexInputNumber);
+        editor.putString(getString(R.string.preferences_lastHexNumberString), et_hexInputString.getText().toString());
+
+        editor.commit();
+    }
+
+    // endregion
 
     public void incrementHexInput(View view) {
         hexInputNumber++;
@@ -132,9 +193,16 @@ public class ConversionActivity extends AppCompatActivity {
         String hexInputString = String.format("0x%04X", hexInputNumber);
         tv_hexInput.setText(hexInputString);
 
-        char unicodeSymbol = (char) hexInputNumber;
+        String binaryString = String.format("%16s", Integer.toBinaryString(hexInputNumber)).replace(' ', '0');
+        tv_binaryString.setText(binaryString);
 
+        char unicodeSymbol = (char) hexInputNumber;
         String unicodeSymbolText = String.format("%s", unicodeSymbol);
         tv_unicodeOutput.setText(unicodeSymbolText);
+    }
+
+    private void closeApplication() {
+        this.finishAndRemoveTask();
+        System.exit(0);
     }
 }
